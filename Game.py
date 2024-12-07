@@ -16,79 +16,15 @@ class Game:
         self.col = 7
 
     def isFull(self, col) : return self.board[0 , col] != 0
-
-    #TODO REFACTORIZAR
-    def checkWin(self,row,col) -> bool:
-        board = self.board
-
-        win = False
-        
-        #DOWN
-        try:
-            if (board[row+1,col] == board[row+2,col] ==board[row+3,col] == board[row,col]):
-                return True
-        except:
-            pass
-        
-        #UP
-        try:
-            if (board[row-1,col] == board[row+2,col] ==board[row+3,col] == board[row,col]):
-                return True     
-        except:
-            pass
-
-        #LEFT
-        try:
-            if (board[row,col-1] == board[row,col-2] ==board[row,col-3] == board[row,col]):
-                return True     
-        except:
-            pass
     
-        #RIGHT
-        try:
-            if (board[row,col+1] == board[row,col+2] ==board[row,col+3] == board[row,col]):
-                return True     
-        except:
-            pass
+    #TO MINIMAX FUNCTIONS UTILITIES
+    def canPlay(col,board) : board[0][col] != 0
 
-        #RIGHT-UP
-        try:
-            if (board[row-1,col+1] == board[row-2,col+2] ==board[row-3,col+3] == board[row,col]):
-                return True     
-        except:
-            pass
-            
+    def play(col,board,turn) -> None:
 
-        
-        #RIGHT-DOWN
-        try:
-            if (board[row+1,col+1] == board[row+2,col+2] ==board[row+3,col+3] == board[row,col]):
-                return True     
-        except:
-            pass
-
-        #LEFT-UP
-        try:
-            if (board[row-1,col-1] == board[row-2,col-2] ==board[row-3,col-3] == board[row,col]):
-                return True     
-        except:
-            pass
-
-        #LEFT-DOWN
-        try:
-            if (board[row+1,col-1] == board[row+2,col-2] ==board[row+3,col-3] == board[row,col]):
-                return True     
-        except:
-            pass
-        
-
-
-
-        return False
-    
-
-
-
+        for row in reversed(range(6)):
+            if board[row][col] != 0:
+                board[row][col] = turn
 
 
 

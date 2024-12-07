@@ -69,6 +69,20 @@ class View:
     
 
     def get_events(self) -> list : return pygame.event.get()
+
+    def possibleThrowPaint(self,row,col,turn) -> None:
+
+        x = col * self.BLOCKSIZE
+        y = row * self.BLOCKSIZE
+        rect = pygame.Rect(x, y, self.BLOCKSIZE, self.BLOCKSIZE)
+
+        color = RED_LIGHT_COLOR_RGB if turn == RED_TURN else YELLOW_LIGHT_COLOR_RGB
+        pygame.draw.rect(self.SCREEN,color,rect)
+        pygame.display.flip()
+
+
+
+        
         
     
 
